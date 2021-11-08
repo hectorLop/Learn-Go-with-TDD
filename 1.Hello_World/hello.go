@@ -13,15 +13,27 @@ func Hello(name string, language string) string {
 		name = "World"
 	}
 
-	if language == spanish {
-		return spanishHelloPrefix + name
+	prefix := greetingPrefix(language)
+
+	return prefix + name
+}
+
+// IMPORTANT: Functions that start with a lowercase letter are considered
+// private functions, while public functions start with a uppercase letter.
+
+// (prefix string) is a named return value, it creates a variable called
+// prefix assigned with the "zero" value, "" in this case.
+func greetingPrefix(language string) (prefix string) {
+	switch language {
+	case french:
+		prefix = frenchHelloPrefix
+	case spanish:
+		prefix = spanishHelloPrefix
+	default:
+		prefix = englishHelloPrefix
 	}
 
-	if language == french {
-		return frenchHelloPrefix + name
-	}
-
-	return englishHelloPrefix + name
+	return
 }
 
 func main() {
